@@ -1,0 +1,39 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  Nombre: MyString
+  APaterno: MyString
+  AMaterno: MyString
+  FechaNac: 2015-11-08
+  Sexo: false
+  DomicilioCalle: MyString
+  DomicilioCiudad: MyString
+  Telefono: MyString
+  BajoTMedico: false
+  TomaActualMedicamento: false
+  MedicamentoTomado: MyString
+  SangraExcesivo: false
+  EsVIH: false
+  EstaEmbarazada: false
+  EsAlergico: false
+  MedicamentoAlergia: MyString
+  TipoSangre: MyString
+
+two:
+  Nombre: MyString
+  APaterno: MyString
+  AMaterno: MyString
+  FechaNac: 2015-11-08
+  Sexo: false
+  DomicilioCalle: MyString
+  DomicilioCiudad: MyString
+  Telefono: MyString
+  BajoTMedico: false
+  TomaActualMedicamento: false
+  MedicamentoTomado: MyString
+  SangraExcesivo: false
+  EsVIH: false
+  EstaEmbarazada: false
+  EsAlergico: false
+  MedicamentoAlergia: MyString
+  TipoSangre: MyString

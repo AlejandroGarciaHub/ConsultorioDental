@@ -1,0 +1,99 @@
+	<h1><%=name%> Expediente</h1>
+
+	<div>
+	  <ul class="nav nav-tabs" role="tablist">
+	    <li role="presentation" class="active"><a href="#datos-personales" aria-controls="datos-personales" role="tab" data-toggle="tab">Datos Personales</a></li>
+	    <li role="presentation"><a href="#datos-medicos" aria-controls="datos-medicos" role="tab" data-toggle="tab">Datos Medicos</a></li>
+	  </ul>
+	</div>
+	
+ <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="datos-personales">
+    	<%= form_for(@patient) do |f|%>
+    		<% @patient.errors.full_messages.each do |message| %>
+	    		<div class="be-red white top-space">
+	    			* <%= message%>
+	    		</div>
+    		<%end%>
+    		<div class=" row field" >
+    			Foto:  <%=f.file_field :photo%>
+    		</div>
+			<div class="field">
+				<%= f.text_field :nombre, placeholder: "Nombre(s)", class:"form-control-personales"%>
+			</div>
+			<div class="field">
+				<%= f.text_field :aPaterno, placeholder: "Apellido Paterno", class:"form-control-personales"%>
+			</div>
+			<div class="field">
+				<%= f.text_field :aMaterno, placeholder: "Apellido Materno", class:"form-control-personales"%>
+			</div>
+			<div class="field">
+				<%= f.text_field :fechaNac, :start_year => Date.current.year, :end_year => 1930,:use_month_names => ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre','Diciembre'], class:"form-control-personales", placeholder: "Edad"%>
+			</div>
+			 <div class="field">
+				<%= f.label :sexo, "Sexo"%>
+  				<%= f.select(:sexo, [['Masculino',false], ['Femenino',true]], {:selected => (@patient.sexo?)}) %>
+  			</div>
+			<div class="field">
+				<%= f.text_field :domicilioCalle, placeholder: "Calle", class:"form-control-personales"%> 
+				<div class="field">
+					<%= f.text_field :domicilioCiudad, placeholder: "Ciudad", class:"form-control-personales"%>	
+				</div>
+			</div>
+
+			<div class="field">
+				<%= f.text_field :telefono, placeholder: "Telefono", class:"form-control-personales"%>
+			</div>
+			 <div class="field">
+			  	<%= f.submit "Guardar", class:"btn green white margin-right"%>
+			    <%= link_to 'Atras', @patient, class:"btn orange white" %>
+  			</div>
+		<%end%>
+    </div>
+
+    <div role="tabpanel" class="tab-pane" id="datos-medicos">    	
+     	<%= form_for [@patient] do |f|%>
+
+			 <div class="field">
+				<%= f.label :bajoTMedico, "¿Bajo Tratamiento Medico?"%>
+  				<%= f.select(:bajoTMedico, [['No',false], ['Si',true]], {:selected => (@patient.bajoTMedico?)}) %>
+  			</div>
+			 <div class="field">
+				<%= f.label :tomaActualMedicamento, "¿Toma algun medicamento actualmente?"%>
+  				<%= f.select(:tomaActualMedicamento, [['No',false], ['Si',true]], {:selected => (@patient.tomaActualMedicamento?)}) %>
+  			</div>
+  			<div class="field">
+					<%= f.text_field :medicamentoTomado, placeholder: "¿Cual?", class:"form-controll"%>	
+				</div>
+  			<div class="field">
+				<%= f.label :sangraExcesivo, "¿Sangra excesivamente al cortarse?"%>
+  				<%= f.select(:sangraExcesivo, [['No',false], ['Si',true]], {:selected => (@patient.sangraExcesivo?)}) %>
+  			</div>
+  			<div class="field">
+				<%= f.label :esVIH, "¿Es VIH positivo?"%>
+  				<%= f.select(:esVIH, [['No',false], ['Si',true]], {:selected => (@patient.esVIH?)}) %>
+  			</div>
+  			<div class="field">
+				<%= f.label :estaEmbarazada, "¿Está embarazada?"%>
+  				<%= f.select(:estaEmbarazada, [['No',false], ['Si',true]], {:selected => (@patient.estaEmbarazada?)}) %>
+  			</div>
+			<div class="field">
+				<%= f.label :esAlergico, "¿Es alergico a algun medicamento?"%>
+  				<%= f.select(:esAlergico, [['No',false], ['Si',true]], {:selected => (@patient.esAlergico?)}) %>
+  			</div>
+  			<div class="field">
+					<%= f.text_field :medicamentoAlergia, placeholder: "¿Cual?", class:"form-controll"%>
+			</div>
+  			<div class="field">
+				<%= f.label :tipoSangre, "¿Tipo de Sangre?"%>
+  				<%= f.select(:tipoSangre, [['A+',"A+"], ['A-',"A-"], ['B+',"B+"],['B-',"B-"], ['AB+',"AB+"], ['AB-',"AB-"], ['O+',"O+"], ['O-',"O-"]], {:selected => (@patient.tipoSangre?)}) %>
+  			</div>
+  			<div class="field">
+			  	<%= f.submit "Guardar", class:"btn green white margin-right"%>
+			    <%= link_to 'Atras', @patient, class:"btn orange white" %>
+  			</div>
+  		<%end%>
+    </div>
+
+  </div>
+

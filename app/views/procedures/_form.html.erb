@@ -1,0 +1,28 @@
+<div class="center-xs" style="width:80%; margin:0 auto;">
+<h1><%=procedimiento%> Procedimiento</h1>
+<%= form_for([@appointment,@procedure]) do |f| %>
+    
+    <div class="field">
+      <%=f.label :nombre, "Paciente"%>
+    </div>
+    <div class="field relative">
+        <%=@appointment.patient.nombre_completo%>
+    </div>
+    <div class="field">
+      <%=f.label :tipo, "Procedimiento"%>
+    </div>
+    <div class="field">
+      <%= f.collection_select(:tipo, Category.all.order(:nombre), :nombre, :nombre) %>
+    </div>
+    <div class="field">
+      <%= f.text_area :descripcion, placeholder:"Descripcion del procedimiento", class:"form-control", style:"height:200px;" %>
+    </div>
+    <div class="field">
+      <%= f.text_field :precio, placeholder:"Precio"%>
+    </div>
+    <div class="field">
+      <%= f.button "Generar", class:"btn green white" %> |
+       <%= link_to 'Regresar', appointment_procedures_path, class:"btn green white" %>
+    </div>
+<% end %>
+  </div>

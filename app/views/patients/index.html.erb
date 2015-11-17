@@ -1,0 +1,22 @@
+<div class="container-fluid" style="margin:0 auto;">
+	<%= link_to 'Nuevo Paciente', new_patient_path, class:"btn white green" %>
+	<h1 class="">Expedientes</h1>
+	<form id="live-search" action="" class="styled" method="post">
+	    <fieldset>
+	        <input type="text" class="text-input" id="filter" value="" />
+	        <span id="filter-count"></span>
+	    </fieldset>
+	</form>
+	<div class="row patientlist">
+		<%@patients.each do |patient|%>
+			<div class="col-md-4 text-center margin-patient">
+				<div class="box relative patient-height background-patient center-div">
+					<h3 class="text-patient">
+						<%= link_to truncate("["+patient.id.to_s+"] "+patient.nombre_completo, length:30),  patient %>
+					</h3>
+				</div>
+				<%= link_to "Editar", edit_patient_path(patient), class:"green cream btn top-space"%>			
+			</div>
+		<%end%>
+	</div>
+</div>

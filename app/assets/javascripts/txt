@@ -1,0 +1,16 @@
+<%= f.collection_select(:patient_id, Patient.order(:Nombre), :id, :Nombre_Completo) %>
+
+
+
+
+jQuery(function() {
+  return $('#appointment_patient_nombre').autocomplete({
+    source: $('#appointment_patient_nombre').data('autocomplete-source'),
+    select: function(event, ui) {
+      event.preventDefault();
+      $(this).val(ui.item.label);
+      return $('#patient_id').val(ui.item.value);
+    }
+  });
+});
+  

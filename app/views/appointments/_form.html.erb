@@ -1,0 +1,56 @@
+<div class="center-xs" style="width:80%; margin:0 auto;">
+  <%= form_for(@appointment) do |f| %>
+    <% if @appointment.errors.any? %>
+      <div id="error_explanation">
+      <%if @appointment.errors.count>1%>
+        <h2><%= pluralize(@appointment.errors.count, "errores") %> evitaron que esta cita se guardara:</h2>
+      <%else%>
+        <h2><%= pluralize(@appointment.errors.count, "error") %> evitó que esta cita se guardara:</h2>
+       <%end%>
+
+        <ul>
+        <% @appointment.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.text_field :patient_nombre, placeholder: "Paciente", data: {autocomplete_source: Patient.order(:nombre).map{ |t| { :label => t.nombre_busqueda, :value => t.id }}}, class:"form-control-citas"%>
+      <%= f.hidden_field :patient_id, id: 'patient_id' %>
+    </div>
+    <div class="field relative">
+      <%= f.text_field :fecha, placeholder:"Fecha", class:"form-control-citas" %>
+    </div>
+    <div class="field">
+        <%= f.label :motivo, "Motivo"%>
+          <%= f.select(:motivo, [['Revisión',"Revisión"],['Intervención Programada','Intervención Programada']], {:selected => (@appointment.motivo?)}) %>
+    </div>
+    <div class="field">
+      <%= f.text_area :anotaciones, placeholder:"Anotaciones previas", class:"form-control", style:"height:200px;" %>
+    </div>
+    <div class="actions">
+      <%= f.submit "Guardar", class:"btn green white margin-right" %>
+      <%= link_to 'Atras', @appointment, class:"btn orange white" %>
+    </div>
+  <% end %>
+  <p></p>
+</div>
+  <div class="panel-group center-xs" id="accordion" role="tablist" aria-multiselectable="true">
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="headingOne">
+        <h4 class="panel-title">
+          <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            Mostrar/Ocultar Agenda
+          </a>
+        </h4>
+      </div>
+      <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+        <div class="panel-body">
+          <div id="calendarCita">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Paciente:</strong>
+  <%= @appointment.patient.nombre_completo %>
+</p>
+
+<p>
+  <strong>Tipo:</strong>
+  <%= @procedure.tipo %>
+</p>
+
+<p>
+  <strong>Descripcion:</strong>
+  <%= @procedure.descripcion %>
+</p>
+
+<p>
+  <strong>Precio:</strong>
+  <%= @procedure.precio %>
+</p>
+
+<%= link_to 'Editar', edit_appointment_procedure_path(@appointment,@procedure) %> |
+<%= link_to 'Regresar', appointment_procedures_path %>

@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  BajoTMedico: false
+  TomaActualMedicamento: false
+  MedicamentoTomado: MyString
+  SangraExcesivo: false
+  EsVIH: false
+  EstaEmbarazada: false
+  EsAlergico: false
+  MedicamentoAlergia: MyString
+  TipoSangre: MyString
+
+two:
+  BajoTMedico: false
+  TomaActualMedicamento: false
+  MedicamentoTomado: MyString
+  SangraExcesivo: false
+  EsVIH: false
+  EstaEmbarazada: false
+  EsAlergico: false
+  MedicamentoAlergia: MyString
+  TipoSangre: MyString

@@ -1,0 +1,244 @@
+<div style="width:80%; margin:0 auto;">
+
+	<% unless @patient.user.nil?%>
+		<p>
+		Añadido por: <%=@patient.user.email%>
+		</p>
+		<%end%>
+	<h1> Expediente</h1>
+
+	<div>
+	  <ul class="nav nav-tabs" role="tablist">
+	    <li role="presentation" class="active"><a href="#datos-personales" aria-controls="datos-personales" role="tab" data-toggle="tab">Datos Personales</a></li>
+	    <li role="presentation"><a href="#datos-medicos" aria-controls="datos-medicos" role="tab" data-toggle="tab">Datos Medicos</a></li>
+	  </ul>
+	</div>
+	
+ <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="datos-personales">
+    	<%= form_for(@patient) do |f|%>
+			<div class="field row col-md">
+				<h4>
+					<%= f.label "Foto:"%>
+				</h4>   
+				<h4 class="padding-campos"> 
+    	 			<%= image_tag @patient.photo.url(:thumb)%>
+    	 		</h4>
+			</div>
+    	
+			<div class="field row col-md">
+				<h4>
+				<%= f.label "Nombre:"%>
+				</h4>   
+				<h4 class="padding-campos"> 
+				<%=@patient.nombre_completo%>					
+				</h4>
+			</div>
+			<div class="field row col-md">
+				<h4>
+				<%= f.label "Edad:"%>
+				</h4>   
+				<h4 class="padding-campos"> 
+				<%=@patient.calcula_edad%> años					
+				</h4>
+			</div>
+			<div class="field row col-md">
+				<h4>
+				<%= f.label "Sexo:"%>
+				</h4>
+				<%if @patient.sexo=true%>
+					<h4 class="padding-campos"> 
+						Masculino
+					</h4>
+				<%else%>
+					<h4 class="padding-campos"> 
+						Femenino
+					</h4>
+				<%end%>				
+			</div>
+			<div class="field row col-md">
+				<h4>
+				<%= f.label "Domicilio:"%>
+				</h4>   
+				<h4 class="padding-campos"> 
+					<%=@patient.domicilioCalle%>
+					<% if @patient.domicilioCiudad.present?%>
+					, <%=@patient.domicilioCiudad%>
+					<%end%>
+				</h4>
+			</div>
+			<div class="field row col-md">
+				<h4>
+				<%= f.label "Telefono:"%>
+				</h4>   
+				<h4 class="padding-campos"> 
+					<%=@patient.telefono%>
+				</h4>
+			</div>
+		<%end%>
+    </div>
+
+    <div role="tabpanel" class="tab-pane" id="datos-medicos">
+     	<%= form_for(@patient) do |f|%>
+			<div class="field row col-md">
+				<h4>
+				<%= f.label :bajoTMedico, "¿Bajo Tratamiento Medico?"%>
+				</h4>   
+				<h4 class="padding-campos">
+				<%if @patient.bajoTMedico==true%>
+					<h4 class="padding-campos"> 
+						Si
+					</h4>
+				<%else%>
+					<h4 class="padding-campos"> 
+						No
+					</h4>
+				<%end%>	
+				</h4>
+			</div>
+			<div class="field row col-md">
+				<h4>
+				<%= f.label :tomaActualMedicamento, "¿Toma algun medicamento actualmente?"%>
+				</h4>   
+				<h4 class="padding-campos">
+				<%if @patient.tomaActualMedicamento==true%>
+					<h4 class="padding-campos"> 
+						Si
+					</h4>
+				<%else%>
+					<h4 class="padding-campos"> 
+						No
+					</h4>
+				<%end%>	
+				</h4>
+			</div>
+  			<div class="field row col-md">
+  				<h4>
+					<%= f.label :medicamentoTomado, "¿Cual?"%>
+				</h4>
+  				<h4 class="padding-campos">
+					<%= @patient.medicamentoTomado%>
+				</h4>
+			</div>
+  			<div class="field row col-md">
+  				<h4>
+					<%= f.label :sangraExcesivo, "¿Sangra excesivamente al cortarse?"%>
+				</h4>
+				<%if @patient.sangraExcesivo==true%>
+					<h4 class="padding-campos"> 
+						Si
+					</h4>
+				<%else%>
+					<h4 class="padding-campos"> 
+						No
+					</h4>
+				<%end%>	
+  			</div>
+  			<div class="field row col-md">
+  				<h4>
+					<%= f.label :esVIH, "¿Es VIH positivo?"%>
+				</h4>
+				<%if @patient.esVIH==true%>
+					<h4 class="padding-campos"> 
+						Si
+					</h4>
+				<%else%>
+					<h4 class="padding-campos"> 
+						No
+					</h4>
+				<%end%>	
+  			</div>
+  			<div class="field row col-md">
+  				<h4>
+					<%= f.label :estaEmbarazada, "¿Está embarazada?"%>
+  				</h4>
+				<%if @patient.estaEmbarazada==true%>
+					<h4 class="padding-campos"> 
+						Si
+					</h4>
+				<%else%>
+					<h4 class="padding-campos"> 
+						No
+					</h4>
+				<%end%>	
+  			</div>
+  			<div class="field row col-md">
+  				<h4>
+				<%= f.label :esAlergico, "¿Es alergico a algun medicamento?"%>
+  				</h4>
+				<%if @patient.esAlergico==true%>
+					<h4 class="padding-campos"> 
+						Si
+					</h4>
+				<%else%>
+					<h4 class="padding-campos"> 
+						No
+					</h4>
+				<%end%>	
+  			</div>
+  			<div class="field row col-md">
+  				<h4>
+					<%= f.label :medicamentoAlergia, "¿Cual?"%>
+				</h4>
+  				<h4 class="padding-campos">
+					<%= @patient.medicamentoAlergia%>
+				</h4>
+			</div>
+  			<div class="field row col-md">
+  				<h4>
+				<%= f.label :tipoSangre, "Tipo de Sangre"%>
+  				</h4>
+				<%if @patient.tipoSangre=="A+"%>
+					<h4 class="padding-campos"> 
+						A+
+					</h4>
+				<%elsif @patient.tipoSangre=="A-"
+					%>				
+					<h4 class="padding-campos"> 
+						A-
+					</h4>
+				<%elsif @patient.tipoSangre=="B+"
+					%>				
+					<h4 class="padding-campos"> 
+						B+
+					</h4>
+				<%elsif @patient.tipoSangre=="A-"
+					%>				
+					<h4 class="padding-campos"> 
+						B+
+					</h4>
+				<%elsif @patient.tipoSangre=="B-"
+					%>				
+					<h4 class="padding-campos"> 
+						B-
+					</h4>
+				<%elsif @patient.tipoSangre=="AB+"
+					%>				
+					<h4 class="padding-campos"> 
+						AB+
+					</h4>
+				<%elsif @patient.tipoSangre=="AB-"
+					%>				
+					<h4 class="padding-campos"> 
+						AB-
+					</h4>
+				<%elsif @patient.tipoSangre=="O+"
+					%>
+					<h4 class="padding-campos"> 
+						O+
+					</h4>
+				<%elsif @patient.tipoSangre=="O-"
+					%>
+					<h4 class="padding-campos"> 
+						O-
+					</h4>
+				<%end%>	
+  			</div>
+  		<%end%>
+    </div>
+	<%= link_to "Editar", edit_patient_path(@patient), class:"green cream btn"%>
+    <%= link_to 'Atras', patients_path, class:"btn orange white margin-right" %>
+	<%= link_to "Eliminar", @patient, method: :delete, data: { confirm: '¿Estas seguro?' }, class:"be-red btn white"%>
+  </div>
+
+  </div>

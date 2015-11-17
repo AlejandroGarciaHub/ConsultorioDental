@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  Motivo: MyString
+  Fecha: 2015-11-08
+  Anotaciones: MyText
+
+two:
+  Motivo: MyString
+  Fecha: 2015-11-08
+  Anotaciones: MyText
