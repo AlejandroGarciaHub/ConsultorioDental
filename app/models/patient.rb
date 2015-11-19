@@ -1,8 +1,7 @@
 class Patient < ActiveRecord::Base
 
   belongs_to :user
-  has_many :appointments
-  accepts_nested_attributes_for :appointments
+  has_many :appointments, :dependent => :destroy
 
   has_attached_file :photo, styles: {medium: "300x300", thumb: "140x140>"}, default_url: "/images/:style/missing.png"
   validates_attachment_content_type :photo, content_type: /\Aimage\/.*\Z/

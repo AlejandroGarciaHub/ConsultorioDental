@@ -1,24 +1,40 @@
-<p id="notice"><%= notice %></p>
+<div class="center-xs" style="width:40%; margin:0 auto;">
 
-<p>
-  <strong>Paciente:</strong>
-  <%= @appointment.patient.nombre_completo %>
-</p>
+    <%= form_for(@procedure) do |f|%>
+      <div class="field row">
+        <h4 class="large-padding">
+        <%= f.label "Paciente:"%>
+        </h4>   
+        <h4 class="padding-campos dato-form-controll"> 
+        <%=@appointment.patient.nombre_completo%>  
+        </h4>
+      </div>
+      <div class="field row">
+        <h4 class="large-padding">
+        <%= f.label "Tipo de Procedimiento:"%>
+        </h4>   
+        <h4 class="padding-campos dato-form-controll"> 
+        <%=@procedure.tipo%>
+        </h4>
+      </div>
+      <div class="field">
+        <h4 class="large-padding">
+        <%= f.label "Descripcion:"%>
+        </h4>
+        <%=f.text_area :descripcion, :readonly => f.object.persisted?, class:"form-control", style:"height:200px;" %>
+      </div>
+      <div class="field row">
+        <h4 class="large-padding">
+        <%= f.label "Precio:"%>
+        </h4>   
+        <h4 class="padding-campos dato-form-controll"> 
+        <%=@procedure.precio_pesos%>          
+        </h4>
+      </div>
+       <p>
+<%end%>
 
-<p>
-  <strong>Tipo:</strong>
-  <%= @procedure.tipo %>
-</p>
-
-<p>
-  <strong>Descripcion:</strong>
-  <%= @procedure.descripcion %>
-</p>
-
-<p>
-  <strong>Precio:</strong>
-  <%= @procedure.precio %>
-</p>
-
-<%= link_to 'Editar', edit_appointment_procedure_path(@appointment,@procedure) %> |
-<%= link_to 'Regresar', appointment_procedures_path %>
+<%= link_to "Editar", edit_appointment_procedure_path(@appointment,@procedure), class:"green cream btn "%> |
+<%= link_to 'Volver', appointment_procedures_path, class:"orange cream btn margin-right" %>
+<%= link_to 'Eliminar', [@appointment,@procedure], method: :delete, data: { confirm: '¿Está seguro?' },class:"be-red cream btn " %>
+</div>

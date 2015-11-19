@@ -1,10 +1,13 @@
 Rails.application.routes.draw do
 
+
+#Crear vista como con el root path, pendiende 
    resources :procedures, :path => 'intervenciones' do 
     collection do 
       get :list, :path => 'todas'
     end
   end
+
   resources :categories
   devise_for :users
   resources :patients, :path => "expedientes"

@@ -5,6 +5,11 @@ class AppointmentsController < ApplicationController
   # GET /appointments
   # GET /appointments.json
 
+
+  def current_user=(user)
+    @current_user = user
+  end
+
   def index
     @appointments = Appointment.all
   end
@@ -12,6 +17,7 @@ class AppointmentsController < ApplicationController
   # GET /appointments/1
   # GET /appointments/1.json
   def show
+    @procedures=Procedure.where(appointment_id: params[:id])
   end
 
   # GET /appointments/new
@@ -27,7 +33,7 @@ class AppointmentsController < ApplicationController
   # POST /appointments
   # POST /appointments.json
   def create
-    @appointment = current_user.appointments.new(appointment_params)
+   @appointment = Appointment.new(appointment_params)
     respond_to do |format|
       if @appointment.save
         format.html { redirect_to @appointment, notice: '¡Creado!' }

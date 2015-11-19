@@ -1,6 +1,6 @@
 class ProceduresController < ApplicationController
   before_action :set_procedure, only: [:show, :edit, :update, :destroy]
-  before_action :set_appointment, only: [:show,:edit,:new,:create,:update]
+  before_action :set_appointment, only: [:show,:edit,:new,:create,:update,:destroy]
   # GET /procedures
   # GET /procedures.json
   def index
@@ -9,6 +9,7 @@ class ProceduresController < ApplicationController
 
   def list
     @procedures=Procedure.all
+    @appointments=Appointment.all
   end
   # GET /procedures/1
   # GET /procedures/1.json
@@ -63,10 +64,9 @@ class ProceduresController < ApplicationController
   # DELETE /procedures/1
   # DELETE /procedures/1.json
   def destroy
-
     @procedure.destroy
     respond_to do |format|
-      format.html { redirect_to appointment_procedures_url, notice: 'Procedure was successfully destroyed.' }
+      format.html { redirect_to appointment_procedures_path(@appointment,@procedure), notice: 'Procedure was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

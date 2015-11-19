@@ -30,6 +30,7 @@ $(document).on('page:change',function() {
         sideBySide: true,
         minDate: moment().add('d', 5).toDate(),
         daysOfWeekDisabled: ["0","6"],
+        useCurrent: false,
         icons: {
                     time: "fa fa-clock-o",
                     date: "fa fa-calendar",

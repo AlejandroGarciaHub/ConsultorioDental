@@ -7,6 +7,11 @@
   <%= devise_error_messages! %>
 
   <div class="field">
+    <%= f.label :username,"Usuario" %><br />
+    <%= f.text_field :username, autofocus: true, class:"log-form-controll" %>
+  </div>
+  
+  <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, class:"log-form-controll" %>
   </div>

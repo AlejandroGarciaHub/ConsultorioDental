@@ -4,10 +4,9 @@ class Appointment < ActiveRecord::Base
 	validates_datetime :fecha, :after => :now
 	validates :motivo, presence: true
 
-	belongs_to :user
 	belongs_to :patient
 
-	has_many :procedures
+	has_many :procedures, :dependent => :destroy
 
 	def patient_nombre
 		patient.try(:nombre_completo)

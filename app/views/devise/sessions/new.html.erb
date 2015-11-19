@@ -1,13 +1,17 @@
 <div class="row center-xs">
   <div class="col-xs-8 com-md-6">
     <div class="box">
+    <p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
 <h2>Iniciar sesion</h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+
   <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, class:"log-form-controll" %>
-  </div>
+    <%= f.label :login, "Usuario o Email" %><br />
+    <%= f.text_field :login, class:"log-form-controll" %>
+  </div>  
 
   <div class="field">
     <%= f.label :password, "Contraseña" %><br />

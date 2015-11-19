@@ -1,28 +1,159 @@
+<%if false%>
 <p id="notice"><%= notice %></p>
+<%end%>
 
-<h1>Listing Procedures</h1>
+<div class="center-xs" style="width:95%; margin:0 auto;">
 
-<table>
-  <thead>
-    <tr>
-      <th>Nombre</th>
-      <th>Tipo</th>
-      <th>Descripcion</th>
-      <th>Precio</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @procedures.each do |procedure| %>
-      <tr>
-        <td><%= procedure.nombre %></td>
-        <td><%= procedure.tipo %></td>
-        <td><%= procedure.descripcion %></td>
-        <td><%= procedure.precio %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<h1>Procedimientos realizados</h1>
 
-<br>
+	<div>
+	  <ul class="nav nav-tabs" role="tablist">
+	    <li role="presentation" class="active"><a href="#general" aria-controls="general" role="tab" data-toggle="tab">General</a></li>
+	    <li role="presentation"><a href="#limpieza-bucal" aria-controls="limpieza-bucal" role="tab" data-toggle="tab">Limpieza Bucal</a></li>
+	    <li role="presentation"><a href="#obturacion-empaste" aria-controls="obturacion-empaste" role="tab" data-toggle="tab">Obturacion (Empaste)</a></li>
+	    <li role="presentation"><a href="#endodoncia" aria-controls="endodoncia" role="tab" data-toggle="tab">Endodoncia</a></li>
+	    <li role="presentation"><a href="#protesis" aria-controls="protesis" role="tab" data-toggle="tab">Prótesis</a></li>
+	    <li role="presentation"><a href="#implante-dental" aria-controls="implante-dental" role="tab" data-toggle="tab">Implantes Dentales</a></li>
+	    <li role="presentation"><a href="#ortodoncia" aria-controls="ortodoncia" role="tab" data-toggle="tab">Ortodoncia</a></li>
+	    <li role="presentation"><a href="#cosmetica-dental" aria-controls="cosmetica-dental" role="tab" data-toggle="tab">Cosmetica Dental</a></li>
+	    <li role="presentation"><a href="#cirugia" aria-controls="cirugia" role="tab" data-toggle="tab">Cirugias</a></li>
+	  </ul>
+	</div>
+
+<div class="center-xs" style="width:90%; margin:0 auto;">
+		<ul class="list-group">
+	    		    <li class="list-group-item row">
+			        <strong class="margin-custom-text-left">ID</strong> <%=label_tag "", nil, class:"margin-right"%>
+				    <%=label_tag "Precio", nil, class:"margin-right" %>
+					<strong class="margin-custom-text-left"></strong><%=label_tag "Fecha", nil, class:"margin-right" %>
+		        </li>
+	      </ul>
+ <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="general">
+    	<% @procedures.each do |procedure|%>
+	       <ul class="list-group">
+    		    <li class="list-group-item row">
+			        <%= label_tag procedure.id, nil, class:"blue cream btn"%>
+			        <%=label_tag "", nil, class:"margin-right" %><%=procedure.precio_pesos%>
+				    <%=label_tag "", nil, class:"margin-right" %><%= procedure.appointment.fecha.strftime("%d-%m-%Y %I:%M %p")%>
+			        <%=link_to "Ver completo", appointment_procedure_path(procedure.appointment.id,procedure), class:"orange white btn margin-left" %>
+	       		</li>
+	      </ul>
+		<%end%>
+    </div>
+
+        <div role="tabpanel" class="tab-pane" id="limpieza-bucal">
+    	<% @procedures.each do |procedure|%>
+    		<%if procedure.tipo=="Limpieza Bucal"%>
+	       <ul class="list-group">
+    		    <li class="list-group-item row">
+			        <%= label_tag procedure.id, nil, class:"blue cream btn"%>
+			        <%=label_tag "", nil, class:"margin-right" %><%=procedure.precio_pesos%>
+				    <%=label_tag "", nil, class:"margin-right" %><%= procedure.appointment.fecha.strftime("%d-%m-%Y %I:%M %p")%>
+			        <%=link_to "Ver completo", appointment_procedure_path(procedure.appointment.id,procedure), class:"orange white btn margin-left" %>
+	       		</li>
+	      </ul>
+    		<%end%>
+		<%end%>
+    </div>
+
+    <div role="tabpanel" class="tab-pane" id="obturacion-empaste">
+     	<% @procedures.each do |procedure|%>
+     		<%if procedure.tipo=="Obturacion (Empaste)"%>
+	       <ul class="list-group">
+    		    <li class="list-group-item row">
+			        <%= label_tag procedure.id, nil, class:"blue cream btn"%>
+			        <%=label_tag "", nil, class:"margin-right" %><%=procedure.precio_pesos%>
+				    <%=label_tag "", nil, class:"margin-right" %><%= procedure.appointment.fecha.strftime("%d-%m-%Y %I:%M %p")%>
+			        <%=link_to "Ver completo", appointment_procedure_path(procedure.appointment.id,procedure), class:"orange white btn margin-left" %>
+	       		</li>
+	      </ul> 	 		<%end%>
+  		<%end%>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="endodoncia">
+     	<% @procedures.each do |procedure|%>
+     		<%if procedure.tipo=="Endodoncia"%>
+	       <ul class="list-group">
+    		    <li class="list-group-item row">
+			        <%= label_tag procedure.id, nil, class:"blue cream btn"%>
+			        <%=label_tag "", nil, class:"margin-right" %><%=procedure.precio_pesos%>
+				    <%=label_tag "", nil, class:"margin-right" %><%= procedure.appointment.fecha.strftime("%d-%m-%Y %I:%M %p")%>
+			        <%=link_to "Ver completo", appointment_procedure_path(procedure.appointment.id,procedure), class:"orange white btn margin-left" %>
+	       		</li>
+	      </ul>
+ 	 		<%end%>
+  		<%end%>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="protesis">
+     	<% @procedures.each do |procedure|%>
+     		<%if procedure.tipo=="Prótesis"%>
+	       <ul class="list-group">
+    		    <li class="list-group-item row">
+			        <%= label_tag procedure.id, nil, class:"blue cream btn"%>
+			        <%=label_tag "", nil, class:"margin-right" %><%=procedure.precio_pesos%>
+				    <%=label_tag "", nil, class:"margin-right" %><%= procedure.appointment.fecha.strftime("%d-%m-%Y %I:%M %p")%>
+			        <%=link_to "Ver completo", appointment_procedure_path(procedure.appointment.id,procedure), class:"orange white btn margin-left" %>
+	       		</li>
+	      </ul>
+	      <%end%>
+  		<%end%>
+    </div>
+        <div role="tabpanel" class="tab-pane" id="implante-dental">
+     	<% @procedures.each do |procedure|%>
+     		<%if procedure.tipo=="Implante Dental"%>
+	       <ul class="list-group">
+    		    <li class="list-group-item row">
+			        <%= label_tag procedure.id, nil, class:"blue cream btn"%>
+			        <%=label_tag "", nil, class:"margin-right" %><%=procedure.precio_pesos%>
+				    <%=label_tag "", nil, class:"margin-right" %><%= procedure.appointment.fecha.strftime("%d-%m-%Y %I:%M %p")%>
+			        <%=link_to "Ver completo", appointment_procedure_path(procedure.appointment.id,procedure), class:"orange white btn margin-left" %>
+	       		</li>
+	      </ul>
+	      <%end%>
+  		<%end%>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="ortodoncia">
+     	<% @procedures.each do |procedure|%>
+     		<%if procedure.tipo=="Ortodoncia"%>
+	     	       <ul class="list-group">
+    		    <li class="list-group-item row">
+			        <%= label_tag procedure.id, nil, class:"blue cream btn"%>
+			        <%=label_tag "", nil, class:"margin-right" %><%=procedure.precio_pesos%>
+				    <%=label_tag "", nil, class:"margin-right" %><%= procedure.appointment.fecha.strftime("%d-%m-%Y %I:%M %p")%>
+			        <%=link_to "Ver completo", appointment_procedure_path(procedure.appointment.id,procedure), class:"orange white btn margin-left" %>
+	       		</li>
+	      </ul>
+ 	 		<%end%>
+  		<%end%>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="cosmetica-dental">
+     	<% @procedures.each do |procedure|%>
+     		<%if procedure.tipo=="Cósmetica Dental"%>
+	       <ul class="list-group">
+    		    <li class="list-group-item row">
+			        <%= label_tag procedure.id, nil, class:"blue cream btn"%>
+			        <%=label_tag "", nil, class:"margin-right" %><%=procedure.precio_pesos%>
+				    <%=label_tag "", nil, class:"margin-right" %><%= procedure.appointment.fecha.strftime("%d-%m-%Y %I:%M %p")%>
+			        <%=link_to "Ver completo", appointment_procedure_path(procedure.appointment.id,procedure), class:"orange white btn margin-left" %>
+	       		</li>
+	      </ul> 	 		<%end%>
+  		<%end%>
+    </div>
+    <div role="tabpanel" class="tab-pane" id="cirugia">
+     	<% @procedures.each do |procedure|%>
+     		<%if procedure.tipo=="Cirugia"%>
+	       <ul class="list-group">
+    		    <li class="list-group-item row">
+			        <%= label_tag procedure.id, nil, class:"blue cream btn"%>
+			        <%=label_tag "", nil, class:"margin-right" %><%=procedure.precio_pesos%>
+				    <%=label_tag "", nil, class:"margin-right" %><%= procedure.appointment.fecha.strftime("%d-%m-%Y %I:%M %p")%>
+			        <%=link_to "Ver completo", appointment_procedure_path(procedure.appointment.id,procedure), class:"orange white btn margin-left" %>
+	       		</li>
+	      </ul>
+	      <%end%>
+  		<%end%>
+    </div>
+    </div>
+    
+</div>

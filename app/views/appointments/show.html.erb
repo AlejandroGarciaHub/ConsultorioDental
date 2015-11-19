@@ -11,17 +11,17 @@
       </div>
       <div class="field row">
         <h4 class="large-padding">
-        <%= f.label "Fecha:"%>
+        <%= f.label "Fecha agendada:"%>
         </h4>   
         <h4 class="padding-campos dato-form-controll"> 
-        <%=@appointment.fecha.strftime('%c')%>
+        <%=@appointment.fecha.strftime("%d-%m-%Y %I:%M")%>
         </h4>
       </div>
       <div class="field row">
         <h4 class="large-padding">
-        <%= f.label "Motivo:"%>
+        <%= f.label "Motivo de la cita:"%>
         </h4>   
-        <h4 class="padding-campos dato-border-form-controll"> 
+        <h4 class="padding-campos dato-form-controll"> 
         <%=@appointment.motivo%>          
         </h4>
       </div>
@@ -33,22 +33,45 @@
         <%=@appointment.anotaciones%>          
         </h4>
       </div>
-      <div class="field row">
-        <h4 class="large-padding">
-        <%= f.label "Dentista:"%>
-        </h4>   
-        <h4 class="padding-campos dato-form-controll"> 
-        <%=@appointment.user.email%> 
-        </h4>
-      </div>
+      <%if false%>
+            <div class="field row">
+              <h4 class="large-padding">
+              <%= f.label "Dentista:"%>
+              </h4>   
+              <h4 class="padding-campos dato-form-controll"> 
+              <%=@appointment.user.username%> 
+              </h4>
+            </div>
+        
+      <%end%>
        <p>
 <%end%>
 
-<div class="field">
-  <p>Formulario de intervencion</p>
-<%= link_to 'Generar', new_appointment_procedure_path(@appointment,@procedure), class:"orange cream btn margin-right" %>
-</div>
 <%= link_to "Editar", edit_appointment_path(@appointment), class:"green cream btn "%> |
 <%= link_to 'Volver', appointments_path, class:"orange cream btn margin-right" %>
 <%= link_to 'Eliminar', @appointment, method: :delete, data: { confirm: '¿Está seguro?' },class:"be-red cream btn " %>
 </div>
+
+
+<div class="center-xs" style="width:40%; margin:0 auto;">
+
+<h1>Procedimientos realizados en la cita</h1>
+
+    <% @procedures.each do |procedure| %>
+       <ul class="list-group">
+        <li class="list-group-item row"><%= link_to procedure.id, appointment_procedure_path(procedure.appointment.id,procedure), class:"blue cream btn margin-right" %> <strong class="margin-custom-text">Tipo: </strong><%= procedure.tipo%>
+         </li>
+      </ul>
+    <% end %>
+
+    <div class="field center-xs">
+  <p>Formulario de intervencion</p>
+  <%= link_to 'Generar', new_appointment_procedure_path(@appointment,@procedure), class:"blue cream btn" %>
+
+  <%if false%>
+  <%= link_to 'Ver Todos', appointment_procedures_path(@appointment,@procedure), class:"blue cream btn" %>
+  <%end%>
+</div>
+
+</div>
+

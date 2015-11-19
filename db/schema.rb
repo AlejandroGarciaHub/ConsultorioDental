@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151116021252) do
+ActiveRecord::Schema.define(version: 20151119023623) do
 
   create_table "appointments", force: :cascade do |t|
     t.string   "motivo"
@@ -19,12 +19,10 @@ ActiveRecord::Schema.define(version: 20151116021252) do
     t.text     "anotaciones"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.integer  "user_id"
     t.integer  "patient_id"
   end
 
   add_index "appointments", ["patient_id"], name: "index_appointments_on_patient_id"
-  add_index "appointments", ["user_id"], name: "index_appointments_on_user_id"
 
   create_table "categories", force: :cascade do |t|
     t.string   "nombre"
@@ -85,7 +83,7 @@ ActiveRecord::Schema.define(version: 20151116021252) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.string   "name"
+    t.string   "username"
     t.integer  "permission_level"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
