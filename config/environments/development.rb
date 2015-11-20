@@ -14,6 +14,7 @@ Rails.application.configure do
   config.action_controller.perform_caching = false
 
   # Don't care if the mailer can't send.
+config.action_mailer.perform_deliveries=true  
 
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
   
@@ -26,6 +27,7 @@ Rails.application.configure do
   authentication: "plain",
   enable_starttls_auto: true,
   user_name: ENV["GMAIL_USERNAME"],
+  openssl_verify_mode: "none",
   password: ENV["GMAIL_PASSWORD"]
   }
 
