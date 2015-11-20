@@ -9,10 +9,10 @@ Rails.application.routes.draw do
   end
 
   resources :categories
-  devise_for :users
-  resources :patients, :path => "expedientes"
-  resources :appointments, :path => "citas" do
-    resources :procedures, :path => "intervenciones"
+  devise_for :users, path: "", :path_names => {:sign_up=> 'registrar',:sign_in => 'ingresar', :sign_out => 'salir', :edit=>'editar',:new=>'nueva',:password=>'contraseña'}
+  resources :patients, :path => "expedientes", :path_names=>{:edit=> 'editar', :new=>'nuevo'}
+  resources :appointments, :path => "citas", :path_names=>{:edit=> 'editar', :new=>'nuevo'} do
+    resources :procedures, :path => "intervenciones", :path_names=>{:edit=> 'editar', :new=>'nuevo'}
   end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

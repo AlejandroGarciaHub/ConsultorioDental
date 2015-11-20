@@ -57,3 +57,11 @@ en:
               blank: "es requerido"
             precio:
               blank: "es requerido"
+        user:
+          attributes:
+            email:
+              blank: "es requerido"
+            password_:
+              blank: "es requerida"
+            username:
+              blank: "es requerido"

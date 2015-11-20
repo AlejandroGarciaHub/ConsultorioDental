@@ -11,12 +11,12 @@ class User < ActiveRecord::Base
 	validates :username,
 	  	:presence => true,
 	  	:uniqueness => {
-	    :case_sensitive => false
+	    :case_sensitive => false 
 	  	}
 
 	validate :validate_username
 
-  ATTR_NAMES = {:login => "usuario/email"}
+  ATTR_NAMES = {:login => "usuario/email",:username=>"El usuario",:password=>"La contraseña"}
     def self.human_attribute_name(attr, options={})
      ATTR_NAMES[attr.to_sym] || super
     end
@@ -26,7 +26,6 @@ class User < ActiveRecord::Base
 	def validate_username
 	  	if User.where(email: username).exists?
     	errors.add(:username, :invalid)
-#Aqui salta error de invalid, checar como validar usuario y correo
   		end
 	end
 
