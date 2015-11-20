@@ -23,7 +23,6 @@
 //= require_tree .
 
 
-
 $(document).on('page:change',function() {
     $('#appointment_fecha').datetimepicker({
         format: "YYYY-MM-DD hh:mm a",
