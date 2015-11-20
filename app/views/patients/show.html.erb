@@ -1,4 +1,4 @@
-<div style="width:40%; margin:0 auto;">
+<div style="width:50%; margin:0 auto;">
 
 	<% unless @patient.user.nil?%>
 		<p>
@@ -11,6 +11,7 @@
 	  <ul class="nav nav-tabs" role="tablist">
 	    <li role="presentation" class="active"><a href="#datos-personales" aria-controls="datos-personales" role="tab" data-toggle="tab">Datos Personales</a></li>
 	    <li role="presentation"><a href="#datos-medicos" aria-controls="datos-medicos" role="tab" data-toggle="tab">Datos Medicos</a></li>
+	    <li role="presentation"><a href="#citas" aria-controls="citas" role="tab" data-toggle="tab">Citas</a></li>
 	  </ul>
 	</div>
 	
@@ -235,10 +236,30 @@
 				<%end%>	
   			</div>
   		<%end%>
-    </div>
+
 	<%= link_to "Editar", edit_patient_path(@patient), class:"green cream btn"%>
     <%= link_to 'Atras', patients_path, class:"btn orange white margin-right" %>
 	<%= link_to "Eliminar", @patient, method: :delete, data: { confirm: '¿Estas seguro?' }, class:"be-red btn white"%>
-  </div>
+
+    </div>
+
+    <div role="tabpanel" class="tab-pane" id="citas">
+		<ul class="list-group">
+		    <li class="list-group-item row">
+		        <strong class="margin-custom-text-left">ID</strong> <%=label_tag "", nil, class:"margin-right"%>
+			    <%=label_tag "Fecha", nil, class:"margin-right-titles" %>
+	        </li>
+	  </ul>
+     	<% @appointments.each do |appointment|%>
+       <ul class="list-group">
+	        <li class="list-group-item row">
+		        <%= label_tag appointment.id, nil, class:"blue cream btn margin-right-index"%>
+		        <%= appointment.fecha.strftime("%d-%m-%Y %I:%M %p")%><%= label_tag "", nil, class:"margin-right-index"%>
+		        <%=link_to "Ver completa", appointment_path(appointment), class:"blue white btn"%>
+	         </li>
+      </ul>
+      <%end%>
+    </div>
+
 
   </div>
