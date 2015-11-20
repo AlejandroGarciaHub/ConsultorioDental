@@ -21,30 +21,28 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :password %> <i>(deja en blanco si no quieres cambiarla)</i><br />
+    <%= f.label :password, "Nueva contraseña" %> <br/><i>(deja tal como está si no quieres cambiarla)</i><br />
     <%= f.password_field :password, autocomplete: "off", class:"log-form-controll" %>
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation %><br />
+    <%= f.label :password_confirmation, "Confirmacion de contraseña" %><br />
     <%= f.password_field :password_confirmation, autocomplete: "off", class:"log-form-controll" %>
   </div>
 
   <div class="field">
-    <%= f.label :current_password %> <i>(necesitamos la contraseña actual para confirmar tus cambios)</i><br />
+    <%= f.label :current_password, "Contraseña actual" %> <br/><i>(necesitamos la contraseña actual para confirmar tus cambios)</i><br />
     <%= f.password_field :current_password, autocomplete: "off", class:"log-form-controll" %>
   </div>
 
   <div class="actions">
-    <%= f.submit "Actualizar", class:"btn green cream" %>
+    <%= f.submit "Actualizar", class:"btn green cream margin-right" %>
+    <%= link_to "Volver", :back, class:"btn orange white" %>
   </div>
 <% end %>
-
-<h3>Cancelar mi cuenta</h3>
-
+<p></p>
 <p>¿Inconforme? <%= button_to "Cancelar mi cuenta", registration_path(resource_name), data: { confirm: "¿Estás seguro?" }, method: :delete %></p>
 
-<%= link_to "Volver", :back %>
   </div>
     </div>
       </div>
