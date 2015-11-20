@@ -154,6 +154,10 @@ padding: 10px 5px;
 .patient-height{
 	height: 70px;
 }
+div.center-div {
+    width:100%;
+    display: table;
+}
 .background-cover{
 	background-position: center;
 }
@@ -166,10 +170,7 @@ padding: 10px 5px;
 	color: #CADDCF;
 }
 
-div.center-div {
-    height:90%; width:100%;
-    display: table;
-}
+
 h3 {
     display: table-cell;
     vertical-align: middle;
