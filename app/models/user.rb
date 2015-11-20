@@ -16,6 +16,13 @@ class User < ActiveRecord::Base
 
 	validate :validate_username
 
+  ATTR_NAMES = {:login => "usuario/email"}
+    def self.human_attribute_name(attr, options={})
+     ATTR_NAMES[attr.to_sym] || super
+    end
+
+
+
 	def validate_username
 	  	if User.where(email: username).exists?
     	errors.add(:username, :invalid)

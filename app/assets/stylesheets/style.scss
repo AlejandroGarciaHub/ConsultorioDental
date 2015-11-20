@@ -4,6 +4,11 @@ html, body{
 	font-family: 'Open Sans', sans-serif;
 }
 
+#wrapper{
+	background-color:  #F9DAF6;
+}
+
+
 .btn{
 	background-color: inherit;
 	border: none;
@@ -48,6 +53,15 @@ li{
 
 .margin-right {
 	margin-right: 15em;
+}
+.margin-left-big {
+	margin-left: 80%;
+}
+.margin-right-index {
+	margin-right: 10em;
+}
+.margin-right-titles {
+	margin-right: 13em;
 }
 .margin-custom-text {
 	margin-right: 10px;

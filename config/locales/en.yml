@@ -20,4 +20,40 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  activerecord:
+    attributes:
+      patient:
+        nombre: "Nombre"
+        fechaNac: "Fecha de Nacimiento"
+    errors:
+      models:
+        patient:
+          attributes:
+            nombre:
+              blank: "es requerido"
+            aPaterno:
+              blank: "es requerido"
+            aMaterno:
+              blank: "es requerido"
+            direccion:
+              blank: "es requerido"
+            domicilioCalle:
+              blank: "es requerido"
+            domicilioCiudad:
+              blank: "es requerido"
+            telefono:
+              blank: "es requerido"
+        appointment:
+          attributes:
+            patient_id:
+              blank: "es necesario, seleccione algun paciente"
+            patient_nombre:
+              blank: "es requerido"
+            fecha:
+              blank: "es requerido"
+        procedure:
+          attributes:
+            descripcion:
+              blank: "es requerido"
+            precio:
+              blank: "es requerido"

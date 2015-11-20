@@ -2,18 +2,28 @@
 <p id="notice"><%= notice %></p>
 <%end%>
 
-<div class="center-xs" style="width:60%; margin:0 auto;">
+<div class="center-xs" style="width:50%; margin:0 auto;">
 
 
 <h1>Procedimientos realizados en la cita</h1>
 
+		<ul class="list-group">
+	    		    <li class="list-group-item row">
+			        <strong class="margin-custom-text-left"></strong> <%=label_tag "", nil, class:"margin-right"%>
+				    <%=label_tag "Precio", nil, class:"margin-right-titles" %>
+					<%=label_tag "Tipo", nil %>
+		        </li>
+	      </ul>
+
     <% @procedures.each do |procedure| %>
        <ul class="list-group">
         <li class="list-group-item row">
-        <%= label_tag procedure.id, nil, class:"blue crem btn margin-right"%>
-        <strong class="margin-custom-text">Tipo: </strong><%= procedure.tipo%>
-        <%=link_to "Ver completo", appointment_procedure_path(procedure.appointment.id,procedure), class:"orange white btn margin-left" %>
+        <%=link_to "Ver completo", appointment_procedure_path(procedure.appointment.id,procedure), class:"blue white btn margin-right-index"%>
+        <%= procedure.precio_pesos%><%= label_tag "", nil, class:"margin-right-index"%>
+        <%= label_tag "", nil%><%= procedure.tipo%>
+
          </li>
       </ul>
     <% end %>
+    <%= link_to 'Volver', appointment_path(@appointment.id), class:"orange white btn margin-left-big" %>
 </div>

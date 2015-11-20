@@ -26,7 +26,7 @@
 
 $(document).on('page:change',function() {
     $('#appointment_fecha').datetimepicker({
-        format: "YYYY/MM/DD HH:mm a",
+        format: "YYYY-MM-DD hh:mm a",
         sideBySide: true,
         minDate: moment().add('d', 5).toDate(),
         daysOfWeekDisabled: ["0","6"],
@@ -97,6 +97,33 @@ $(document).on('page:change',function(){
         // Update the count
         var numberItems = count;
         $("#filter-count").text("Numero de coincidencias = "+count);
+    });
+});
+
+
+$(document).on('page:change',function(){
+    $("#filter-procedimientos").keyup(function(){
+ 
+        // Retrieve the input field text and reset the count to zero
+        var filter = $(this).val(), count = 0;
+ 
+        // Loop through the comment list
+        $(".tab-pane ul.list-group").each(function(){
+ 
+            // If the list item does not contain the text phrase fade it out
+            if ($(this).text().search(new RegExp(filter, "i")) < 0) {
+                $(this).fadeOut();
+ 
+            // Show the list item if the phrase matches and increase the count by 1
+            } else {
+                $(this).show();
+                count++;
+            }
+        });
+ 
+        // Update the count
+        var numberItems = count;
+        $("#filter-count-procedimientos").text("Numero de coincidencias = "+count);
     });
 });
 

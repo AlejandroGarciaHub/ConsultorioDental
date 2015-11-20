@@ -1,10 +1,12 @@
 class ProceduresController < ApplicationController
   before_action :set_procedure, only: [:show, :edit, :update, :destroy]
   before_action :set_appointment, only: [:show,:edit,:new,:create,:update,:destroy]
+  before_action :authenticate_user!
   # GET /procedures
   # GET /procedures.json
   def index
     @procedures = Procedure.where(appointment_id: params[:appointment_id])
+    @appointment=Appointment.find(params[:appointment_id])
   end
 
   def list
@@ -36,7 +38,7 @@ class ProceduresController < ApplicationController
     @procedure.appointment=@appointment
     respond_to do |format|
       if @procedure.save
-        format.html { redirect_to appointment_procedure_path(@appointment,@procedure), notice: 'Procedure was successfully created.' }
+        format.html { redirect_to appointment_procedure_path(@appointment,@procedure), notice: 'El procedimiento fue creado satisfactoriamente.' }
         format.json { render :show, status: :created, location: @procedure }
       else
         format.html { render :new }
@@ -49,10 +51,9 @@ class ProceduresController < ApplicationController
   # PATCH/PUT /procedures/1.json
   def update
     @appointment=Appointment.find(params[:appointment_id])
-    @procedure = Procedure.new(procedure_params)
-      respond_to do |format|
+    respond_to do |format|
       if @procedure.update(procedure_params)
-        format.html { redirect_to appointment_procedure_path(@appointment,@procedure), notice: 'Procedure was successfully updated.' }
+        format.html { redirect_to appointment_procedure_path(@appointment,@procedure), notice: 'El procedimiento fue acualizado satisfactoriamente.' }
         format.json { render :show, status: :ok, location: @procedure }
       else
         format.html { render :edit }
@@ -66,7 +67,7 @@ class ProceduresController < ApplicationController
   def destroy
     @procedure.destroy
     respond_to do |format|
-      format.html { redirect_to appointment_procedures_path(@appointment,@procedure), notice: 'Procedure was successfully destroyed.' }
+      format.html { redirect_to appointment_procedures_path(@appointment,@procedure), notice: 'El procedimiento fue eliminado satisfactoriamente.' }
       format.json { head :no_content }
     end
   end

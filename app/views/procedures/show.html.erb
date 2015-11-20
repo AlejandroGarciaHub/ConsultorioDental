@@ -1,36 +1,32 @@
-<div class="center-xs" style="width:40%; margin:0 auto;">
+<div id="wrapper2" class="center-xs" style="width:40%; margin:0 auto;">
 
     <%= form_for(@procedure) do |f|%>
-      <div class="field row">
-        <h4 class="large-padding">
-        <%= f.label "Paciente:"%>
-        </h4>   
-        <h4 class="padding-campos dato-form-controll"> 
-        <%=@appointment.patient.nombre_completo%>  
-        </h4>
-      </div>
-      <div class="field row">
-        <h4 class="large-padding">
-        <%= f.label "Tipo de Procedimiento:"%>
-        </h4>   
-        <h4 class="padding-campos dato-form-controll"> 
-        <%=@procedure.tipo%>
-        </h4>
-      </div>
+
+        <div class="top-space" style="width:95%;">
+          <h4 >
+          <%= f.label "Paciente:"%>
+          <%=@appointment.patient.nombre_completo%>            
+          </h4>
+        </div>
+
+        <div class="top-space" style="width:95%;">
+          <%= f.label "Tipo de Procedimiento:"%>        
+          <%=@procedure.tipo%>
+        </div>
+
       <div class="field">
         <h4 class="large-padding">
         <%= f.label "Descripcion:"%>
         </h4>
         <%=f.text_area :descripcion, :readonly => f.object.persisted?, class:"form-control", style:"height:200px;" %>
       </div>
-      <div class="field row">
-        <h4 class="large-padding">
-        <%= f.label "Precio:"%>
-        </h4>   
-        <h4 class="padding-campos dato-form-controll"> 
+
+
+        <div class="top-space" style="width:95%;">
+          <%= f.label "Precio:"%>
         <%=@procedure.precio_pesos%>          
-        </h4>
-      </div>
+        </div>
+
        <p>
 <%end%>
 

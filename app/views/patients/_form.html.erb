@@ -10,11 +10,24 @@
  <div class="tab-content">
     <div role="tabpanel" class="tab-pane active" id="datos-personales">
     	<%= form_for(@patient) do |f|%>
-    		<% @patient.errors.full_messages.each do |message| %>
-	    		<div class="be-red white top-space">
-	    			* <%= message%>
-	    		</div>
-    		<%end%>
+		<div class="center-xs" style="width:100%; margin:0 auto;">
+			<% if @patient.errors.any? %>
+			      <div id="error_explanation">
+				      <%if @patient.errors.count>1%>
+					        <h2><%= pluralize(@patient.errors.count, "errores") %> evitaron que este expediente se guardara:</h2>
+				      <%else%>
+					        <h2><%= pluralize(@patient.errors.count, "error") %> evitó que esta este expediente se guardara:</h2>
+				       <%end%>
+			        <ul>
+			    		<% @patient.errors.full_messages.each do |message| %>
+					    		<div class="be-red white top-space btn">
+					    			 <%= message%>
+					    		</div>
+						<%end%>
+			        </ul>
+			      </div>
+			<% end %>
+			</div>
     		<div class=" row field" >
     			Foto:  <%=f.file_field :photo%>
     		</div>
@@ -28,7 +41,7 @@
 				<%= f.text_field :aMaterno, placeholder: "Apellido Materno", class:"form-control-personales"%>
 			</div>
 			<div class="field">
-				<%= f.text_field :fechaNac, :start_year => Date.current.year, :end_year => 1930,:use_month_names => ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre','Diciembre'], class:"form-control-personales", placeholder: "Edad"%>
+				<%= f.text_field :fechaNac, class:"form-control-personales", placeholder: "Edad"%>
 			</div>
 			 <div class="field">
 				<%= f.label :sexo, "Sexo"%>
@@ -37,7 +50,7 @@
 			<div class="field">
 				<%= f.text_field :domicilioCalle, placeholder: "Calle", class:"form-control-personales"%> 
 				<div class="field">
-					<%= f.text_field :domicilioCiudad, placeholder: "Ciudad", class:"form-control-personales"%>	
+					<%= f.text_field :domicilioCiudad, placeholder: "Ciudad y Estado", class:"form-control-personales"%>	
 				</div>
 			</div>
 
@@ -86,10 +99,12 @@
 			</div>
   			<div class="field">
 				<%= f.label :tipoSangre, "¿Tipo de Sangre?"%>
-  				<%= f.select(:tipoSangre, [['A+',"A+"], ['A-',"A-"], ['B+',"B+"],['B-',"B-"], ['AB+',"AB+"], ['AB-',"AB-"], ['O+',"O+"], ['O-',"O-"]], {:selected => (@patient.tipoSangre?)}) %>
+  				<%= f.select(:tipoSangre, [['A+',"A+"], ['A-',"A-"], ['B+',"B+"],['B-',"B-"], ['AB+',"AB+"], ['AB-',"AB-"], ['O+',"O+"], ['O-',"O-"]], {:selected => (@patient.tipoSangre)}) %>
   			</div>
   			<div class="field">
+  			<%unless @patient.id.nil?%>
 			  	<%= f.submit "Guardar", class:"btn green white margin-right"%>
+			<%end%>
 			    <%= link_to 'Atras', @patient, class:"btn orange white" %>
   			</div>
   		<%end%>

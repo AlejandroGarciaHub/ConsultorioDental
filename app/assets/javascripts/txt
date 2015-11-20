@@ -14,3 +14,11 @@ jQuery(function() {
   });
 });
   
+
+
+<%= f.text_field :fechaNac, :start_year => Date.current.year, :end_year => 1930,:use_month_names => ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre','Diciembre'], class:"form-control-personales", placeholder: "Edad"%>
+
+
+before_action :authenticate_user!, except: [:show, :index]
+
+validates numericality:{ only_integer: true, message:"no es un numero"}

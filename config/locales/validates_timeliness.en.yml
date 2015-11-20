@@ -3,7 +3,7 @@ en:
     messages:
       invalid_date: "no es una fecha valida"
       invalid_time: "no es una hora valida"
-      invalid_datetime: "no son una hora y fecha validos"
+      invalid_datetime: "no es una fecha valida"
       is_at: "debe ser en %{restriction}"
       before: "debe ser antes de %{restriction}"
       on_or_before: "debe ser en o antes de %{restriction}"

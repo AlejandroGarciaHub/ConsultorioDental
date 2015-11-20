@@ -1,38 +1,10 @@
 <div class="row center-xs">
   <div class="col-xs-7 com-md-6">
-  <%= link_to 'Nueva Cita', new_appointment_path, class:"btn green white" %> 
       <h1>Citas</h1>
       <p id="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
-    <div id="calendar">
-    </div>
+      <div id="calendar" style="background-color:#FFFFFF;">
+      </div>
   </div>
 
-  <div class="row col-xs-6 com-md-6">
-    <div class="box">
-
-      <table>
-        <thead>
-          <tr>
-            <th >Paciente</th>
-            <th>Fecha</th>
-            <th colspan="6"></th>
-          </tr>
-        </thead>
-
-        <tbody>
-          <% @appointments.each do |appointment| %>
-            <tr>
-              <td><%= link_to appointment.patient.nombre_completo, appointment, class:"margin-right" %></td>
-              <td><%= appointment.fecha %></td>
-              <td><%= link_to 'Editar', edit_appointment_path(appointment), class:"btn green cream" %></td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-
-      <br>
-
-    </div>
-  </div>
 </div>

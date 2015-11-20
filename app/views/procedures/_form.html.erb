@@ -1,6 +1,26 @@
 <div class="center-xs" style="width:80%; margin:0 auto;">
 <h1><%=procedimiento%> Procedimiento</h1>
 <%= form_for([@appointment,@procedure]) do |f| %>
+
+    <div class="center-xs" style="width:100%; margin:0 auto;">
+      <% if @procedure.errors.any? %>
+            <div id="error_explanation">
+              <%if @procedure.errors.count>1%>
+                  <h2><%= pluralize(@procedure.errors.count, "errores") %> evitaron que este procedimiento se guardara:</h2>
+              <%else%>
+                  <h2><%= pluralize(@procedure.errors.count, "error") %> evitó que este procedimiento se guardara:</h2>
+               <%end%>
+              <ul>
+              <% @procedure.errors.full_messages.each do |message| %>
+                  <div class="be-red white top-space btn">
+                     <%= message%>
+                  </div>
+                <%end%>
+              </ul>
+            </div>
+      <% end %>
+      </div>
+
     
     <div class="field">
       <%=f.label :nombre, "Paciente"%>
@@ -18,7 +38,7 @@
       <%= f.text_area :descripcion, placeholder:"Descripcion del procedimiento", class:"form-control", style:"height:200px;" %>
     </div>
     <div class="field">
-      <%= f.text_field :precio, placeholder:"Precio"%>
+      <%= f.number_field :precio, placeholder:"Precio", :step => 'any'%>
     </div>
     <div class="field">
       <%= f.button "Generar", class:"btn green white" %> |

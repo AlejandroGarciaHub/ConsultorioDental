@@ -10,7 +10,7 @@
 
         <ul>
         <% @appointment.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
+          <div class="btn be-red top-space white"><%= message %></div>
         <% end %>
         </ul>
       </div>
@@ -48,7 +48,7 @@
       </div>
       <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
         <div class="panel-body">
-          <div id="calendarCita">
+          <div id="calendarCita" style="background-color:"#FFFFFF";">
           </div>
         </div>
       </div>

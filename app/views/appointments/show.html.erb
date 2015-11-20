@@ -14,7 +14,7 @@
         <%= f.label "Fecha agendada:"%>
         </h4>   
         <h4 class="padding-campos dato-form-controll"> 
-        <%=@appointment.fecha.strftime("%d-%m-%Y %I:%M")%>
+        <%=@appointment.fecha.strftime("%d-%m-%Y %I:%M %p")%>
         </h4>
       </div>
       <div class="field row">
@@ -29,9 +29,7 @@
         <h4 class="large-padding">
         <%= f.label "Anotaciones:"%>
         </h4>   
-        <h4 class="padding-campos dato-form-controll"> 
-        <%=@appointment.anotaciones%>          
-        </h4>
+        <%=f.text_area :anotaciones, :readonly => f.object.persisted?, class:"form-control", style:"height:200px;" %>
       </div>
       <%if false%>
             <div class="field row">
@@ -55,23 +53,31 @@
 
 <div class="center-xs" style="width:40%; margin:0 auto;">
 
-<h1>Procedimientos realizados en la cita</h1>
-
-    <% @procedures.each do |procedure| %>
-       <ul class="list-group">
-        <li class="list-group-item row"><%= link_to procedure.id, appointment_procedure_path(procedure.appointment.id,procedure), class:"blue cream btn margin-right" %> <strong class="margin-custom-text">Tipo: </strong><%= procedure.tipo%>
-         </li>
-      </ul>
-    <% end %>
-
-    <div class="field center-xs">
-  <p>Formulario de intervencion</p>
-  <%= link_to 'Generar', new_appointment_procedure_path(@appointment,@procedure), class:"blue cream btn" %>
-
-  <%if false%>
-  <%= link_to 'Ver Todos', appointment_procedures_path(@appointment,@procedure), class:"blue cream btn" %>
-  <%end%>
+  <div class="field center-xs">
+    <p>Formulario de intervencion</p>
+    <%= link_to 'Generar', new_appointment_procedure_path(@appointment,@procedure), class:"blue cream btn" %>
 </div>
-
+  <div class="panel-group center-xs" id="accordion" role="tablist" aria-multiselectable="true">
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="headingOne">
+        <h4 class="panel-title">
+          <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            Clic para mostrar/ocultar procedimientos realizados en la cita
+          </a>
+        </h4>
+      </div>
+      <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+        <div class="panel-body">
+              <% @procedures.each do |procedure| %>
+                 <ul class="list-group">
+                  <li class="list-group-item row"><%= link_to procedure.id, appointment_procedure_path(procedure.appointment.id,procedure), class:"blue cream btn margin-right" %>
+                  <%= procedure.tipo%>
+                   </li>
+                </ul>
+              <% end %>
+        </div>
+      </div>
+    </div>
+  <%= link_to 'Ver Todos', appointment_procedures_path(@appointment,@procedure), class:"blue cream btn" %>
 </div>
 
