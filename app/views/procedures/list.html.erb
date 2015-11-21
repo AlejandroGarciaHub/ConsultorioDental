@@ -10,15 +10,15 @@
 
 	<div class="procedurelist">
 	  <ul class="nav nav-tabs" role="tablist">
-	    <li role="presentation" class="active"><a href="#general" aria-controls="general" role="tab" data-toggle="tab">General</a></li>
-	    <li role="presentation"><a href="#limpieza-bucal" aria-controls="limpieza-bucal" role="tab" data-toggle="tab">Limpieza Bucal</a></li>
-	    <li role="presentation"><a href="#obturacion-empaste" aria-controls="obturacion-empaste" role="tab" data-toggle="tab">Obturacion (Empaste)</a></li>
-	    <li role="presentation"><a href="#endodoncia" aria-controls="endodoncia" role="tab" data-toggle="tab">Endodoncia</a></li>
-	    <li role="presentation"><a href="#protesis" aria-controls="protesis" role="tab" data-toggle="tab">Prótesis</a></li>
-	    <li role="presentation"><a href="#implante-dental" aria-controls="implante-dental" role="tab" data-toggle="tab">Implantes Dentales</a></li>
-	    <li role="presentation"><a href="#ortodoncia" aria-controls="ortodoncia" role="tab" data-toggle="tab">Ortodoncia</a></li>
-	    <li role="presentation"><a href="#cosmetica-dental" aria-controls="cosmetica-dental" role="tab" data-toggle="tab">Cosmetica Dental</a></li>
-	    <li role="presentation"><a href="#cirugia" aria-controls="cirugia" role="tab" data-toggle="tab">Cirugias</a></li>
+	    <li  role="presentation" class="active"><a class="gray" href="#general" aria-controls="general" role="tab" data-toggle="tab">General</a></li>
+	    <li role="presentation"><a class="color1" href="#limpieza-bucal" aria-controls="limpieza-bucal" role="tab" data-toggle="tab">Limpieza Bucal</a></li>
+	    <li role="presentation"><a class="color2" href="#obturacion-empaste" aria-controls="obturacion-empaste" role="tab" data-toggle="tab">Obturacion (Empaste)</a></li>
+	    <li role="presentation"><a class="color3" href="#endodoncia" aria-controls="endodoncia" role="tab" data-toggle="tab">Endodoncia</a></li>
+	    <li role="presentation"><a class="color4" href="#protesis" aria-controls="protesis" role="tab" data-toggle="tab">Prótesis</a></li>
+	    <li role="presentation"><a class="color5" href="#implante-dental" aria-controls="implante-dental" role="tab" data-toggle="tab">Implantes Dentales</a></li>
+	    <li role="presentation"><a class="color6" href="#ortodoncia" aria-controls="ortodoncia" role="tab" data-toggle="tab">Ortodoncia</a></li>
+	    <li role="presentation"><a class="color7" href="#cosmetica-dental" aria-controls="cosmetica-dental" role="tab" data-toggle="tab">Cosmetica Dental</a></li>
+	    <li role="presentation"><a class="color8" href="#cirugia" aria-controls="cirugia" role="tab" data-toggle="tab">Cirugias</a></li>
 	  </ul>
 	</div>
 
@@ -35,7 +35,24 @@
 	    	<% @procedures.each do |procedure|%>
 				<ul class="list-group">
 				    <li class="list-group-item row">
-				        <%=link_to procedure.appointment.id, appointment_path(procedure.appointment.id), class:"blue white btn margin-right" %>
+				    	<%if procedure.tipo=="Limpieza Bucal"%>
+				    		<% color= "color1"%>
+				    	<%elsif procedure.tipo=="Obturacion (Empaste)"%>
+				    		<% color= "color2"%>
+				    	<%elsif procedure.tipo=="Endodoncia"%>
+				    		<% color= "color3"%>
+				    	<%elsif procedure.tipo=="Prótesis"%>
+			    			<% color= "color4"%>
+				    	<%elsif procedure.tipo=="Implante Dental"%>
+							<% color= "color5"%>
+				    	<%elsif procedure.tipo=="Ortodoncia"%>
+							<% color= "color6"%>
+				    	<%elsif procedure.tipo=="Cósmetica Dental"%>
+							<% color= "color7"%>
+				    	<%elsif procedure.tipo=="Cirugia"%>
+				    		<% color= "color8"%>
+				    	<%end%>
+				        <%=link_to procedure.appointment.id, appointment_path(procedure.appointment.id), class:"#{color} btn margin-right" %>
 				        <%=procedure.precio_pesos%><%=label_tag "", nil, class:"margin-right" %>
 					    <%= procedure.appointment.fecha.strftime("%d-%m-%Y %I:%M %p")%><%=label_tag "", nil, class:"margin-right" %>
 				        <%=link_to "Ver completo", appointment_procedure_path(procedure.appointment.id,procedure), class:"green2 white btn" %>
@@ -45,28 +62,28 @@
 	    </div>
 
 	    <div role="tabpanel" class="tab-pane" id="limpieza-bucal">
-	       	<%= render "listform", tipo: "Limpieza Bucal"%>
+	       	<%= render "listform", tipo: "Limpieza Bucal", color: "color1"%>
 	    </div>
 	    <div role="tabpanel" class="tab-pane" id="obturacion-empaste">
-	     	           	<%= render "listform", tipo: "Obturacion (Empaste)"%>
+	     	           	<%= render "listform", tipo: "Obturacion (Empaste)", color: "color2"%>
 	    </div>
 	    <div role="tabpanel" class="tab-pane" id="endodoncia">
-	           	<%= render "listform", tipo: "Endodoncia"%>
+	           	<%= render "listform", tipo: "Endodoncia", color: "color3"%>
 	    </div>
 	    <div role="tabpanel" class="tab-pane" id="protesis">
-	           	<%= render "listform", tipo: "Prótesis"%>
+	           	<%= render "listform", tipo: "Prótesis", color: "color4"%>
 	    </div>
 	    <div role="tabpanel" class="tab-pane" id="implante-dental">
-	       	<%= render "listform", tipo: "Implante Dental"%>
+	       	<%= render "listform", tipo: "Implante Dental", color: "color5"%>
 	    </div>
 	    <div role="tabpanel" class="tab-pane" id="ortodoncia">
-	  		<%= render "listform", tipo: "Ortodoncia"%>
+	  		<%= render "listform", tipo: "Ortodoncia", color: "color6"%>
 		</div>
 	    <div role="tabpanel" class="tab-pane" id="cosmetica-dental">
-	           	<%= render "listform", tipo: "Cósmetica Dental"%>
+	           	<%= render "listform", tipo: "Cósmetica Dental", color: "color7"%>
 	    </div>
 	    <div role="tabpanel" class="tab-pane" id="cirugia">
-	           	<%= render "listform", tipo: "Cirugia"%>
+	           	<%= render "listform", tipo: "Cirugia", color: "color8"%>
 	    </div>
 	 </div>    
 </div>
