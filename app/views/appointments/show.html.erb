@@ -1,53 +1,52 @@
 <div style="width:40%; margin:0 auto;">
 
-    <%= form_for(@appointment) do |f|%>
-      <div class="field row">
-        <h4 class="large-padding">
-        <%= f.label "Paciente:"%>
-        </h4>   
-        <h4 class="padding-campos dato-form-controll"> 
-        <%=@appointment.patient.nombre_completo%>  
-        </h4>
-      </div>
-      <div class="field row">
-        <h4 class="large-padding">
-        <%= f.label "Fecha agendada:"%>
-        </h4>   
-        <h4 class="padding-campos dato-form-controll"> 
-        <%=@appointment.fecha.strftime("%d-%m-%Y %I:%M %p")%>
-        </h4>
-      </div>
-      <div class="field row">
-        <h4 class="large-padding">
-        <%= f.label "Motivo de la cita:"%>
-        </h4>   
-        <h4 class="padding-campos dato-form-controll"> 
-        <%=@appointment.motivo%>          
-        </h4>
-      </div>
-      <div class="field row">
-        <h4 class="large-padding">
-        <%= f.label "Anotaciones:"%>
-        </h4>   
-        <%=f.text_area :anotaciones, :readonly => f.object.persisted?, class:"form-control", style:"height:200px;" %>
-      </div>
-      <%if false%>
-            <div class="field row">
-              <h4 class="large-padding">
-              <%= f.label "Dentista:"%>
-              </h4>   
-              <h4 class="padding-campos dato-form-controll"> 
-              <%=@appointment.user.username%> 
-              </h4>
-            </div>
-        
-      <%end%>
-       <p>
-<%end%>
+  <%= form_for(@appointment) do |f|%>
+    <div class="field row">
+      <h4 class="large-padding">
+      <%= f.label "Paciente:"%>
+      </h4>   
+      <h4 class="padding-campos dato-form-controll"> 
+      <%=@appointment.patient.nombre_completo%>  
+      </h4>
+    </div>
+    <div class="field row">
+      <h4 class="large-padding">
+      <%= f.label "Fecha agendada:"%>
+      </h4>   
+      <h4 class="padding-campos dato-form-controll"> 
+      <%=@appointment.fecha.strftime("%d-%m-%Y %I:%M %p")%>
+      </h4>
+    </div>
+    <div class="field row">
+      <h4 class="large-padding">
+      <%= f.label "Motivo de la cita:"%>
+      </h4>   
+      <h4 class="padding-campos dato-form-controll"> 
+      <%=@appointment.motivo%>          
+      </h4>
+    </div>
+    <div class="field row">
+      <h4 class="large-padding">
+      <%= f.label "Anotaciones:"%>
+      </h4>   
+      <%=f.text_area :anotaciones, :readonly => f.object.persisted?, class:"form-control", style:"height:200px;" %>
+    </div>
+    <%if false%>
+        <div class="field row">
+          <h4 class="large-padding">
+          <%= f.label "Dentista:"%>
+          </h4>   
+          <h4 class="padding-campos dato-form-controll"> 
+          <%=@appointment.user.username%> 
+          </h4>
+        </div>
+    <%end%>
+    <p>
+  <%end%>
 
-<%= link_to "Editar", edit_appointment_path(@appointment), class:"green cream btn "%> |
-<%= link_to 'Volver', appointments_path, class:"orange cream btn margin-right" %>
-<%= link_to 'Eliminar', @appointment, method: :delete, data: { confirm: '¿Está seguro?' },class:"be-red cream btn " %>
+  <%= link_to "Editar", edit_appointment_path(@appointment), class:"green cream btn "%> |
+  <%= link_to 'Volver', appointments_path, class:"orange cream btn margin-right" %>
+  <%= link_to 'Eliminar', @appointment, method: :delete, data: { confirm: '¿Está seguro?' },class:"be-red cream btn " %>
 </div>
 
 
@@ -56,7 +55,7 @@
   <div class="field center-xs">
     <strong>Formulario de intervención</strong><p></p>
     <%= link_to 'Generar', new_appointment_procedure_path(@appointment,@procedure), class:"blue cream btn" %>
-</div>
+  </div>
   <div class="panel-group center-xs top-space" id="accordion" role="tablist" aria-multiselectable="true">
     <div class="panel panel-default">
       <div class="panel-heading" role="tab" id="headingOne">
@@ -89,4 +88,3 @@
     </div>
   <%= link_to 'Ver Todos', appointment_procedures_path(@appointment,@procedure), class:"green2 white btn top-space" %>
 </div>
-

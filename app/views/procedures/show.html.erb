@@ -3,18 +3,18 @@
     <h2>REGISTRO DEL PROCEDIMIENTO</h2>
     <p class="top-space"></p>
     <%= form_for(@procedure) do |f|%>
+    
+      <div class="top-space" style="width:95%;">
+        <h4 >
+        <%= f.label "Paciente:"%>
+        <%=@appointment.patient.nombre_completo%>            
+        </h4>
+      </div>
 
-        <div class="top-space" style="width:95%;">
-          <h4 >
-          <%= f.label "Paciente:"%>
-          <%=@appointment.patient.nombre_completo%>            
-          </h4>
-        </div>
-
-        <div class="top-space" style="width:95%;">
-          <%= f.label "Tipo de Procedimiento:"%>        
-          <%=@procedure.tipo%>
-        </div>
+      <div class="top-space" style="width:95%;">
+        <%= f.label "Tipo de Procedimiento:"%>        
+        <%=@procedure.tipo%>
+      </div>
 
       <div class="field">
         <h4 class="large-padding">
@@ -23,16 +23,14 @@
         <%=f.text_area :descripcion, :readonly => f.object.persisted?, class:"form-control", style:"height:200px;" %>
       </div>
 
+      <div class="top-space" style="width:95%;">
+        <%= f.label "Precio:"%>
+      <%=@procedure.precio_pesos%>          
+      </div>
+      <p>
+    <%end%>
 
-        <div class="top-space" style="width:95%;">
-          <%= f.label "Precio:"%>
-        <%=@procedure.precio_pesos%>          
-        </div>
-
-       <p>
-<%end%>
-
-<%= link_to "Editar", edit_appointment_procedure_path(@appointment,@procedure), class:"green cream btn "%> |
-<%= link_to 'Volver', appointment_procedures_path, class:"orange cream btn margin-right" %>
-<%= link_to 'Eliminar', [@appointment,@procedure], method: :delete, data: { confirm: '¿Está seguro?' },class:"be-red cream btn " %>
+  <%= link_to "Editar", edit_appointment_procedure_path(@appointment,@procedure), class:"green cream btn "%> |
+  <%= link_to 'Volver', appointment_procedures_path, class:"orange cream btn margin-right" %>
+  <%= link_to 'Eliminar', [@appointment,@procedure], method: :delete, data: { confirm: '¿Está seguro?' },class:"be-red cream btn " %>
 </div>
