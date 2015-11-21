@@ -6,7 +6,7 @@ class Patient < ActiveRecord::Base
 	validates_datetime :fechaNac, presence: true, :before => :now
 	validates :domicilioCalle, presence: true, length: { minimum: 10, message: "es muy corto" }
 	validates :domicilioCiudad, presence: true, length: { minimum: 10, message: "es muy corto" }
-	validates :telefono, presence: true, length: { minimum: 7, message: "es muy corto" }
+	validates :telefono, presence: true, length: { minimum: 7, message: "es muy corto" },numericality:{ only_integer: true, message:"no es un numero"}
 
 
 	ATTR_NAMES = {:nombre => "El campo nombre", :aPaterno=> "El campo apellido paterno", :aMaterno=>"El campo apellido materno",
