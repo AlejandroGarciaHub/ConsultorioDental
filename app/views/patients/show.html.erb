@@ -249,7 +249,7 @@
     <div role="tabpanel" class="tab-pane" id="citas">
 		<ul class="list-group">
 		    <li class="list-group-item row">
-		        <strong class="margin-custom-text-left">ID</strong> <%=label_tag "", nil, class:"margin-right"%>
+		        <strong class="margin-custom-text-left">ID</strong> <%=label_tag "", nil, class:"margin-right-titles"%>
 			    <%=label_tag "Fecha", nil, class:"margin-right-titles" %>
 	        </li>
 	  </ul>
@@ -258,7 +258,7 @@
 	        <li class="list-group-item row">
 		        <%= label_tag appointment.id, nil, class:"blue cream btn margin-right-index"%>
 		        <%= appointment.fecha.strftime("%d-%m-%Y %I:%M %p")%><%= label_tag "", nil, class:"margin-right-index"%>
-		        <%=link_to "Ver completa", appointment_path(appointment), class:"blue white btn"%>
+		        <%=link_to "Ver completa", appointment_path(appointment), class:"green2 white btn"%>
 	         </li>
       </ul>
       <%end%>

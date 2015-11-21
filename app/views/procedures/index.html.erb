@@ -18,7 +18,7 @@
     <% @procedures.each do |procedure| %>
        <ul class="list-group">
         <li class="list-group-item row">
-        <%=link_to "Ver completo", appointment_procedure_path(procedure.appointment.id,procedure), class:"blue white btn margin-right-index"%>
+        <%=link_to "Ver completo", appointment_procedure_path(procedure.appointment.id,procedure), class:"green2 white btn margin-right-index"%>
         <%= procedure.precio_pesos%><%= label_tag "", nil, class:"margin-right-index"%>
         <%= label_tag "", nil%><%= procedure.tipo%>
 

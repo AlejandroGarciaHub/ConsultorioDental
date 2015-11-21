@@ -51,13 +51,13 @@
 </div>
 
 
-<div class="center-xs" style="width:40%; margin:0 auto;">
+<div class="center-xs" style="width:55%; margin:0 auto;">
 
   <div class="field center-xs">
-    <p>Formulario de intervencion</p>
+    <strong>Formulario de intervención</strong><p></p>
     <%= link_to 'Generar', new_appointment_procedure_path(@appointment,@procedure), class:"blue cream btn" %>
 </div>
-  <div class="panel-group center-xs" id="accordion" role="tablist" aria-multiselectable="true">
+  <div class="panel-group center-xs top-space" id="accordion" role="tablist" aria-multiselectable="true">
     <div class="panel panel-default">
       <div class="panel-heading" role="tab" id="headingOne">
         <h4 class="panel-title">
@@ -68,16 +68,25 @@
       </div>
       <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
         <div class="panel-body">
+            <ul class="list-group">
+              <li class="list-group-item row">
+              <%= label_tag "", nil, class:"margin-right"%>
+              <%=label_tag "Precio", nil, class:"margin-right-titles", style:"margin-left:30px;"%>
+              <%=label_tag "Tipo", nil%>
+            </li>
+        </ul>
               <% @procedures.each do |procedure| %>
                  <ul class="list-group">
-                  <li class="list-group-item row"><%= link_to procedure.id, appointment_procedure_path(procedure.appointment.id,procedure), class:"blue cream btn margin-right" %>
-                  <%= procedure.tipo%>
+                  <li class="list-group-item row">
+                   <%=link_to "Ver completo", appointment_procedure_path(procedure.appointment.id,procedure), class:"green2 white btn margin-right-index", style:"margin-left:10px;"%>
+                    <%= procedure.precio_pesos%><%= label_tag "", nil, class:"margin-right-index"%>
+                    <%= procedure.tipo%>
                    </li>
                 </ul>
               <% end %>
         </div>
       </div>
     </div>
-  <%= link_to 'Ver Todos', appointment_procedures_path(@appointment,@procedure), class:"blue cream btn" %>
+  <%= link_to 'Ver Todos', appointment_procedures_path(@appointment,@procedure), class:"green2 white btn top-space" %>
 </div>
 
