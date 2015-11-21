@@ -1,0 +1,12 @@
+<% @procedures.each do |procedure|%>
+    <%if procedure.tipo==tipo%>
+	       <ul class="list-group">
+    		    <li class="list-group-item row">
+			        <%=link_to procedure.appointment.id, appointment_path(procedure.appointment.id), class:"blue white btn margin-right" %>
+			        <%=procedure.precio_pesos%><%=label_tag "", nil, class:"margin-right" %>
+				    <%= procedure.appointment.fecha.strftime("%d-%m-%Y %I:%M %p")%><%=label_tag "", nil, class:"margin-right" %>
+			        <%=link_to "Ver completo", appointment_procedure_path(procedure.appointment.id,procedure), class:"green2 white btn" %>
+	       		</li>
+	      </ul>
+    <%end%>
+<%end%>
