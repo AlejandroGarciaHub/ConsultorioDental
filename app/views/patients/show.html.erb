@@ -77,6 +77,9 @@
 				</h4>
 			</div>
 		<%end%>
+		<%= link_to "Editar", edit_patient_path(@patient), class:"green cream btn"%>
+    	<%= link_to 'Atras', patients_path, class:"btn orange white margin-right" %>
+		<%= link_to "Eliminar", @patient, method: :delete, data: { confirm: '¿Estas seguro?' }, class:"be-red btn white"%>
     </div>
 
     <div role="tabpanel" class="tab-pane" id="datos-medicos">

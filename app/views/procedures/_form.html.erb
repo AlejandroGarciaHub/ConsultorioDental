@@ -32,7 +32,7 @@
       <%=f.label :tipo, "Procedimiento"%>
     </div>
     <div class="field">
-      <%= f.collection_select(:tipo, Category.all.order(:nombre), :nombre, :nombre) %>
+      <%= f.collection_select(:tipo, Category.all.order(:nombre), :nombre, :nombre, {:selected => (@procedure.tipo)}) %>
     </div>
     <div class="field">
       <%= f.text_area :descripcion, placeholder:"Descripcion del procedimiento", class:"form-control", style:"height:200px;" %>
