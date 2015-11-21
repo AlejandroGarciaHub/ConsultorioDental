@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
 
 
-#Crear vista como con el root path, pendiende 
-   resources :procedures, :path => 'intervenciones' do 
+  resources :procedures, :path => 'intervenciones' do 
     collection do 
       get :list, :path => 'todas'
     end
