@@ -31,8 +31,11 @@ a:active {
 	text-transform: uppercase;
 	cursor: pointer;
 	border-radius: 7px;
+	transition: 0.3s;
 }
-
+.btn:hover{
+	transform: scale(1.2);
+}
 .be-red {
 	background-color: #C12C42;
 }
